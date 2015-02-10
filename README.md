@@ -6,7 +6,7 @@
 
 This README outlines the details of collaborating on this Ember application.
 
-A short introduction of this app could easily go here.
+CodeTestBot helps Cyrus employees easily accept, track, review and process inbound code tests from developer applicants.
 
 ## Prerequisites
 
@@ -23,6 +23,8 @@ You will need the following things properly installed on your computer.
 * `bower install`
 
 ## Running / Development
+
+CodeTestBotApp requires that the CodeTestBotServer application be running, otherwise errors will be generated. Start by following the setup instructions in the [server README file](https://github.com/cyrusinnovation/CodeTestBotServer/blob/master/README.md) and run that application before running this one.
 
 * `ember server`
 * Visit your app at http://localhost:4200.
