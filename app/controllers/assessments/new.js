@@ -26,7 +26,9 @@ export default Ember.ObjectController.extend(AutoSaveable, {
             var assessment = this.get('content');
             assessment.set('published', true);
             return assessment.save().then(function() {
-                self.transitionToRoute('submission.index', assessment.get('submission'));
+                self.transitionToRoute('assessment', assessment, {
+                    queryParams: {isSavedAssessment: 'true'}
+                });
             });
         }
     }
