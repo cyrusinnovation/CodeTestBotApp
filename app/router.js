@@ -42,6 +42,8 @@ Router.map(function() {
             });
         });
     });
+
+    this.route('error', { path: '/*path' });
 });
 
 export default Router;
