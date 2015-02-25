@@ -21,6 +21,7 @@ You will need the following things properly installed on your computer.
 * change into the new directory
 * `npm install`
 * `bower install`
+* NOTE: if asked which version of Ember to install, choose option #2 (ember#1.8.0-beta.1)
 
 ## Running / Development
 
