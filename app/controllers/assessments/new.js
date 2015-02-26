@@ -3,7 +3,7 @@ import AutoSaveable from 'code-test-bot-app/mixins/auto-saveable';
 import Score from 'code-test-bot-app/models/score';
 
 export default Ember.ObjectController.extend(AutoSaveable, {
-  breadCrumb: 'New Asessment',
+    breadCrumb: 'New Asessment',
     selectedLanguage: Ember.computed.alias('content.submission.language'),
     selectedLevel: Ember.computed.alias('content.submission.level'),
     showExemplaryOption: Ember.computed.equal('score', 3),
@@ -21,7 +21,7 @@ export default Ember.ObjectController.extend(AutoSaveable, {
     },
 
     actions: {
-        createAssessment: function() {
+        saveAssessment: function() {
             var self = this;
             var assessment = this.get('content');
             assessment.set('published', true);
