@@ -161,3 +161,12 @@ table.active.recruiter th.level {
 table.active.recruiter th.time {
     width: 15%;
 }
+
+.thank-you-img-container {
+  width: 100%;
+  text-align: center;
+}
+
+.thank-you-img-container img {
+  height: 375px;
+}

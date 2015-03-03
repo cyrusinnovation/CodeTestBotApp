@@ -1,0 +1,68 @@
+<div class="row">
+    <div class="col-md-12">
+        <h1>New Submission</h1>
+
+        <form class="form-horizontal" role="form">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Your Name</label>
+                <div class="col-sm-4">
+                  {{input value=candidateName placeholder="Name" class="form-control"}}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Your Email</label>
+                <div class="col-sm-4">
+                  {{input value=candidateEmail placeholder="Email Address" class="form-control"}}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Level You're Applying For</label>
+                <div class="col-sm-4">
+                  {{view Ember.Select viewName="select"
+                  contentBinding="levels"
+                  optionLabelPath="content.text"
+                  optionValuePath="content.id"
+                  prompt="Select candidate level:"
+                  selectionBinding="selectedLevel"
+                  class="form-control"}}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Language of Submission</label>
+                <div class="col-sm-4">
+                  {{view Ember.Select viewName="select"
+                  id="language-select"
+                  contentBinding="languages"
+                  optionLabelPath="content.name"
+                  optionValuePath="content.id"
+                  prompt="Select a language:"
+                  selectionBinding="selectedLanguage"
+                  class="form-control"}}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Notes</label>
+                <div class="col-sm-6">
+                    <p>Copy and paste the email text or any instructions given by the candidate.</p>
+                  {{textarea value=submission.emailText rows="6" placeholder="Email text or instructions" id="email-text" class="form-control"}}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Code Submission Archive</label>
+                <div class="col-sm-6">
+                    <p>Select the zipfile you are submitting.</p>
+                  {{view 'file-upload' name="zipfile" file=submission.zipfile id="zipfile" fileName=submission.fileName class="form-control"}}
+                </div>
+            </div>
+        </form>
+
+        <hr/>
+
+        <button type="button" class="btn btn-success pull-right" {{bind-attr disabled=isFormIncomplete}} {{action submit}}>Create New Codetest</button>
+    </div>
+</div>

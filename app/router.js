@@ -33,7 +33,7 @@ Router.map(function() {
         this.resource('analytics', function() {
 
         });
-        
+
         this.resource('admin', function() {
             this.resource('users', function() {
                 this.resource('user', { path: '/:user_id' }, function() {
@@ -42,6 +42,9 @@ Router.map(function() {
             });
         });
     });
+
+    this.route('extsubmission');
+    this.route('thanks');
 
     this.route('error', { path: '/*path' });
 });
