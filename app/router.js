@@ -4,49 +4,53 @@ var Router = Ember.Router.extend({
   location: CodeTestBotAppENV.locationType
 });
 
-Router.map(function() {
-    this.resource('auth', function() {
-        this.route('login');
-        this.route('logout');
-        this.route('complete');
+Router.map(function () {
+  this.resource('auth', function () {
+    this.route('login');
+    this.route('logout');
+    this.route('complete');
+  });
+
+  this.resource('extsubmissions', function () {
+    this.route('new');
+  });
+
+  this.resource('secured', {path: '/'}, function () {
+    this.route('edit');
+
+    this.resource('submissions', function () {
+      this.route('new');
+
+      this.resource('submission', {path: '/:submission_id'}, function () {
+        this.route('report');
+
+        this.resource('assessments', function () {
+          this.route('new');
+
+          this.resource('assessment', {path: '/:assessment_id'}, function () {
+            this.route('edit');
+          });
+        });
+      });
     });
 
-    this.resource('secured', { path: '/' }, function() {
-        this.route('edit');
+    this.resource('analytics', function () {
 
-        this.resource('submissions', function() {
-            this.route('new');
-
-            this.resource('submission', { path: '/:submission_id' }, function() {
-                this.route('report');
-
-                this.resource('assessments', function() {
-                    this.route('new');
-
-                    this.resource('assessment', { path: '/:assessment_id' }, function() {
-                        this.route('edit');
-                    });
-                });
-            });
-        });
-
-        this.resource('analytics', function() {
-
-        });
-
-        this.resource('admin', function() {
-            this.resource('users', function() {
-                this.resource('user', { path: '/:user_id' }, function() {
-                    this.route('edit');
-                });
-            });
-        });
     });
 
-    this.route('extsubmission');
-    this.route('thanks');
+    this.resource('admin', function () {
+      this.resource('users', function () {
+        this.resource('user', {path: '/:user_id'}, function () {
+          this.route('edit');
+        });
+      });
+    });
+  });
 
-    this.route('error', { path: '/*path' });
+
+  this.route('thanks');
+
+  this.route('error', {path: '/*path'});
 });
 
 export default Router;

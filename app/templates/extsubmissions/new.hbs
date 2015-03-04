@@ -48,7 +48,7 @@
                 <label class="col-sm-2 control-label">Notes</label>
                 <div class="col-sm-6">
                     <p>Copy and paste the email text or any instructions given by the candidate.</p>
-                  {{textarea value=submission.emailText rows="6" placeholder="Email text or instructions" id="email-text" class="form-control"}}
+                  {{textarea value=extsubmission.emailText rows="6" placeholder="Email text or instructions" id="email-text" class="form-control"}}
                 </div>
             </div>
 
@@ -56,7 +56,7 @@
                 <label class="col-sm-2 control-label">Code Submission Archive</label>
                 <div class="col-sm-6">
                     <p>Select the zipfile you are submitting.</p>
-                  {{view 'file-upload' name="zipfile" file=submission.zipfile id="zipfile" fileName=submission.fileName class="form-control"}}
+                  {{view 'file-upload' name="zipfile" file=extsubmission.zipfile id="zipfile" fileName=extsubmission.fileName class="form-control"}}
                 </div>
             </div>
         </form>
