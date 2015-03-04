@@ -24,7 +24,7 @@
                   contentBinding="levels"
                   optionLabelPath="content.text"
                   optionValuePath="content.id"
-                  prompt="Select candidate level:"
+                  prompt="Select level of application:"
                   selectionBinding="selectedLevel"
                   class="form-control"}}
                 </div>
@@ -38,7 +38,7 @@
                   contentBinding="languages"
                   optionLabelPath="content.name"
                   optionValuePath="content.id"
-                  prompt="Select a language:"
+                  prompt="Select the language your submission uses:"
                   selectionBinding="selectedLanguage"
                   class="form-control"}}
                 </div>
@@ -47,7 +47,7 @@
             <div class="form-group">
                 <label class="col-sm-2 control-label">Notes</label>
                 <div class="col-sm-6">
-                    <p>Copy and paste the email text or any instructions given by the candidate.</p>
+                    <p>Use this space for any general comments related to your submission that aren't already included in the README.</p>
                   {{textarea value=extsubmission.emailText rows="6" placeholder="Email text or instructions" id="email-text" class="form-control"}}
                 </div>
             </div>
