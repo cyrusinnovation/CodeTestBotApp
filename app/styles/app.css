@@ -170,3 +170,8 @@ table.active.recruiter th.time {
 .thank-you-img-container img {
   height: 375px;
 }
+
+.markdown-pane {
+  border: 1px solid lightgrey;
+}
+

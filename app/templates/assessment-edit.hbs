@@ -53,22 +53,25 @@
 
         <div class="form-group">
           <label>Notes</label>
+
           <p>Please provide your feedback about the submission below in the form of a pros and cons list. Keep comments specific and constructive, remembering that this feedback will be organized and summarized by our recruiting team and shared with the candidate.</p>
+
           <span class="markdown-info"><a href="https://help.github.com/articles/github-flavored-markdown"><img src="/assets/images/32x20.png" width="24px" /> Parsed as Markdown</a></span>
-          <ul class="nav nav-tabs" role="tablist">
-            <li class="active"><a href="#write" role="tab" data-toggle="tab">Write</a></li>
-            <li><a href="#preview" role="tab" data-toggle="tab">Preview</a></li>
-          </ul>
           <div class="tab-content">
             <div class="tab-pane active" id="write">
-              <br />
               {{textarea value=notes rows="6" class="form-control notes"}}
             </div>
-            <div class="tab-pane" id="preview">
-              <br />
-              {{render-marked notes}}
-            </div>
+            <br />
+
+          <label>Live Markdown Preview</label>
           </div>
+
+            <div class="tab-content">
+                <div class="markdown-pane" id="write">
+                    <br />
+                  {{render-marked notes}}
+                </div>
+            </div>
 
           <hr />
         </div>
