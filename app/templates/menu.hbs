@@ -19,10 +19,14 @@
     {{/if}}
 
     <li class="dropdown">
-    <a class="dropdown-toggle" data-toggle="dropdown">{{user.name}} <span class="caret"></span> <img {{bind-attr src=user.imageUrl}} /></a>
+    <a class="dropdown-toggle" data-toggle="dropdown">{{user.name}} <span class="caret"></span> </a>
     <ul class="dropdown-menu" role="menu">
       <li><a {{action 'invalidateSession' }}><i class="fa fa-sign-out"></i> Logout</a></li>
     </ul>
+    </li>
+
+    <li>
+      <img {{bind-attr src=user.imageUrl}} />
     </li>
   </ul>
 </div>
