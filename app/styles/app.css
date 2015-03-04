@@ -60,12 +60,16 @@ body {
   margin-bottom: 3px;
 }
 
+.submission-view-cell {
+  width: 100px;
+}
+
 .table.table-buttons > thead > tr > th, .table.table-buttons > tbody > tr > th, .table.table-buttons > tfoot > tr > th, .table.table-buttons > thead > tr > td, .table.table-buttons > tbody > tr > td, .table.table-buttons > tfoot > tr > td {
   line-height: 2.25;
 }
 
 table .button {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 div.report h5 {
