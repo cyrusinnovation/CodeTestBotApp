@@ -198,5 +198,17 @@ table.active.recruiter th.time {
 
 .markdown-pane {
   border: 1px solid lightgrey;
+  border-radius: 4px;
+  padding-left: 12px;
+}
+
+
+/* MEDIA QUERIES */
+
+
+@media(max-width: 475px){
+  .navbar-logo img {
+    width: 300px;
+  }
 }
 
