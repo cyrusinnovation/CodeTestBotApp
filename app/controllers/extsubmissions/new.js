@@ -29,11 +29,12 @@ export default Ember.ObjectController.extend({
 
   createSubmission: function() {
     var submission = this.get('extsubmission');
+    var source     = this.get('extsource') ? this.get('extsource') : 'External Submission';
     submission.set('candidateName', this.get('candidateName'));
     submission.set('candidateEmail', this.get('candidateEmail'));
     submission.set('level', this.get('selectedLevel'));
     submission.set('language', this.get('selectedLanguage'));
-    submission.set('source', this.get('extsubmission'));
+    submission.set('source', source);
     return submission.save();
   },
 
