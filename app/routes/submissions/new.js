@@ -5,7 +5,7 @@ export default Ember.Route.extend({
         return Ember.Object.create({
             submission: this.store.createRecord('submission'),
             languages: this.store.find('language'),
-            levels: this.store.find('level')
+            levels: this.store.find('level'),
         });
     },
 

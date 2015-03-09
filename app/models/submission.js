@@ -12,6 +12,7 @@ export default DS.Model.extend({
     createdAt: DS.attr(),
     updatedAt: DS.attr(),
     averageScore: DS.attr(),
+    source: DS.attr(),
 
     level: DS.belongsTo('level'),
     language: DS.belongsTo('language'),
@@ -32,6 +33,7 @@ export default DS.Model.extend({
     createdAtDisplay: function() {
         return moment(this.get('createdAt')).format('l LT');
     }.property('createdAt'),
+
     updatedAtDisplay: function() {
         return moment(this.get('updatedAt')).format('l LT');
     }.property('updatedAt')
