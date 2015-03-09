@@ -31,6 +31,7 @@ export default Ember.ObjectController.extend({
     submission.set('candidateEmail', this.get('candidateEmail'));
     submission.set('level', this.get('selectedLevel'));
     submission.set('language', this.get('selectedLanguage'));
+    submission.set('source', 'External Submission');
     return submission.save();
   },
 
