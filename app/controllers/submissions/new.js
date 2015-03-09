@@ -1,11 +1,12 @@
 import Ember from 'ember';
 
 export default Ember.ObjectController.extend({
-  breadCrumb: 'New Submission',
+    breadCrumb: 'New Submission',
     candidateName: null,
     candidateEmail: null,
     selectedLanguage: null,
     selectedLevel: null,
+    sources: ['LinkedIn', 'StackOverflow', 'Whitetruffle', 'Switch', 'Recuiter / Agency', 'Referral', 'Other'],
 
     isFormIncomplete: Ember.computed.or('isCandidateIncomplete', 'isSubmissionIncomplete'),
 
@@ -31,6 +32,7 @@ export default Ember.ObjectController.extend({
         submission.set('candidateEmail', this.get('candidateEmail'));
         submission.set('level', this.get('selectedLevel'));
         submission.set('language', this.get('selectedLanguage'));
+        submission.set('source', this.get('selectedSource'));
         return submission.save();
     },
 

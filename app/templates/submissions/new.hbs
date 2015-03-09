@@ -45,6 +45,17 @@
           </div>
 
           <div class="form-group">
+            <label class="col-sm-2 control-label">Source of Referral</label>
+            <div class="col-sm-4">
+              {{view 'select' 
+                  content=sources
+                  selectionBinding="selectedSource"
+                  prompt="Select a source"
+                  class='form-control'}}
+            </div>
+          </div>          
+
+          <div class="form-group">
             <label class="col-sm-2 control-label">Email Text</label>
             <div class="col-sm-6">
               <p>Copy and paste the email text or any instructions given by the candidate.</p>
