@@ -206,9 +206,17 @@ table.active.recruiter th.time {
 /* MEDIA QUERIES */
 
 
+@media(max-width: 850px){
+  .navbar-logo img {
+    width: 365px;
+    margin-top: 2px;
+  }  
+}
+
 @media(max-width: 475px){
   .navbar-logo img {
     width: 300px;
+    margin-top: 5px;
   }
 }
 
