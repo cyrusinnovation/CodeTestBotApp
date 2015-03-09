@@ -6,6 +6,8 @@ export default Ember.ObjectController.extend({
   candidateEmail: null,
   selectedLanguage: null,
   selectedLevel: null,
+  queryParams: ['extsource'],
+  extsource: null,
 
   isFormIncomplete: Ember.computed.or('isCandidateIncomplete', 'isSubmissionIncomplete'),
 
@@ -31,7 +33,7 @@ export default Ember.ObjectController.extend({
     submission.set('candidateEmail', this.get('candidateEmail'));
     submission.set('level', this.get('selectedLevel'));
     submission.set('language', this.get('selectedLanguage'));
-    submission.set('source', 'External Submission');
+    submission.set('source', this.get('extsubmission'));
     return submission.save();
   },
 
