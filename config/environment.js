@@ -32,6 +32,13 @@ module.exports = function(environment) {
     ENV.NEW_SESSION_URL = 'http://localhost:3000/sessions/new';
   }
 
+  if (environment === 'test') {
+    ENV.baseURL = '/'; // Testem prefers this...
+    ENV.SERVER_HOST = 'http://localhost:3000';
+    ENV.APP_HOST = 'http://localhost:4200';
+    ENV.NEW_SESSION_URL = 'http://localhost:3000/sessions/new';    
+  }
+
   if (environment === 'production') {
       ENV.SERVER_HOST = 'https://codetestbotserver.herokuapp.com';
       ENV.APP_HOST = 'https://codetestbot.herokuapp.com';
