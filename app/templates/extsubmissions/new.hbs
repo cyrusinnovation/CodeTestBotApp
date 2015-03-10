@@ -1,12 +1,13 @@
 <div class="row">
     <div class="col-md-12">
+        <p class="instructions-link text-right">Click <a href="http://www.cyrusinnovation.com/code-test/">here</a> to view submission instructions.</p>
         <h1>New Submission</h1>
 
         <form class="form-horizontal" role="form">
             <div class="form-group">
                 <label class="col-sm-2 control-label">Your Name</label>
                 <div class="col-sm-4">
-                  {{input value=candidateName placeholder="Name" class="form-control"}}
+                  {{input value=candidateName placeholder="Full Name" class="form-control"}}
                 </div>
             </div>
 
@@ -18,55 +19,53 @@
             </div>
 
             <div class="form-group">
-                <label class="col-sm-2 control-label">Level You're Applying For</label>
+                <label class="col-sm-2 control-label">Your Level</label>
                 <div class="col-sm-4">
                   {{view Ember.Select viewName="select"
                   contentBinding="levels"
                   optionLabelPath="content.text"
                   optionValuePath="content.id"
-                  prompt="Select level of application:"
+                  prompt="Select level of application"
                   selectionBinding="selectedLevel"
                   class="form-control"}}
                 </div>
             </div>
 
             <div class="form-group">
-                <label class="col-sm-2 control-label">Language of Submission</label>
+                <label class="col-sm-2 control-label">Programming Language</label>
                 <div class="col-sm-4">
                   {{view Ember.Select viewName="select"
                   id="language-select"
                   contentBinding="languages"
                   optionLabelPath="content.name"
                   optionValuePath="content.id"
-                  prompt="Select the language your submission uses:"
+                  prompt="Select the language your submission uses"
                   selectionBinding="selectedLanguage"
                   class="form-control"}}
                 </div>
             </div>
 
             <div class="form-group">
-              <label class="col-sm-2 control-label">Source of Referral</label>
-              <div class="col-sm-10">
-                {{#if extsource}}
-                <p class="form-control-static">{{extsource}}</p>
-                {{else}}
-                <p class="form-control-static">N/A (source was not provided)</p>
-                {{/if}}
+              <label class="col-sm-2 control-label">How Did You Find Us?</label>
+              <div class="col-sm-4">
+                {{view 'select' 
+                    content=sources
+                    selectionBinding="selectedSource"
+                    prompt="Select a source"
+                    class='form-control'}}
               </div>
-            </div>            
+            </div>          
 
             <div class="form-group">
                 <label class="col-sm-2 control-label">Notes</label>
                 <div class="col-sm-6">
-                    <p>Use this space for any general comments related to your submission that aren't already included in the README.</p>
-                  {{textarea value=extsubmission.emailText rows="6" placeholder="Email text or instructions" id="email-text" class="form-control"}}
+                  {{textarea value=extsubmission.emailText rows="6" placeholder="Use this space for any general comments related to your submission that aren't already included in the README." id="email-text" class="form-control"}}
                 </div>
             </div>
 
             <div class="form-group">
-                <label class="col-sm-2 control-label">Code Submission Archive</label>
+                <label class="col-sm-2 control-label">Submission Zipfile</label>
                 <div class="col-sm-6">
-                    <p>Select the zipfile you are submitting.</p>
                   {{view 'file-upload' name="zipfile" file=extsubmission.zipfile id="zipfile" fileName=extsubmission.fileName class="form-control"}}
                 </div>
             </div>

@@ -6,8 +6,7 @@ export default Ember.ObjectController.extend({
   candidateEmail: null,
   selectedLanguage: null,
   selectedLevel: null,
-  queryParams: ['extsource'],
-  extsource: null,
+  sources: ['LinkedIn', 'StackOverflow', 'Whitetruffle', 'Switch', 'Recuiter / Agency', 'Referral', 'Other'],
 
   isFormIncomplete: Ember.computed.or('isCandidateIncomplete', 'isSubmissionIncomplete'),
 
@@ -29,12 +28,11 @@ export default Ember.ObjectController.extend({
 
   createSubmission: function() {
     var submission = this.get('extsubmission');
-    var source     = this.get('extsource') ? this.get('extsource') : 'External Submission';
     submission.set('candidateName', this.get('candidateName'));
     submission.set('candidateEmail', this.get('candidateEmail'));
     submission.set('level', this.get('selectedLevel'));
     submission.set('language', this.get('selectedLanguage'));
-    submission.set('source', source);
+    submission.set('source', this.get('selectedSource'));
     return submission.save();
   },
 
