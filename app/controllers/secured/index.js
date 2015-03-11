@@ -39,7 +39,7 @@ var SecuredIndexController = Ember.ArrayController.extend(ArrangeableMixin, User
 
   submissionsNeedingAssessment: function() {
     var submissions = this.get('submissions');
-    var assessments = this.get('userAssessments');
+    var assessments = this.assessments.get('content') || [];
     var submissionsWithUserAssessment = assessments.mapBy('submission.id');
     return submissions.filter(function(submission) {
       return !submissionsWithUserAssessment.contains(submission.id);
