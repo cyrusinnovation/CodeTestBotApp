@@ -16,6 +16,14 @@ test('visiting /', function() {
   visit('/');
 
   andThen(function() {
-    equal(currentPath(), 'auth/login');
+    equal(currentPath(), 'secured.index');
+  });
+});
+
+test('submission list renders', function() {
+  visit('/');
+
+  andThen(function() {
+    equal(find('td:nth-child(1)').eq(0).html(), 'Candi Date');
   });
 });

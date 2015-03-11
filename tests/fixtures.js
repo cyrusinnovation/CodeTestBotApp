@@ -57,11 +57,13 @@ defineServerFixture('/submissions', {
 defineServerFixture('/submissions/1', {
     submission: {
         id: 1,
+        candidate_name: 'Candi Date',
         candidate_email: 'Candidate1',
         level_id: 1,
         email_text: 'some text',
         zipfile: 'url to file',
         language_id: 1,
+        source: 'LinkedIn'
     },
     levels: [
         { id: 1, text: 'Junior' }
