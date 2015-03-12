@@ -8,6 +8,16 @@ var SecuredIndexController = Ember.ArrayController.extend(ArrangeableMixin, User
   submissions: Ember.computed.alias('arrangedContent'),
   submissionIds: Ember.computed.mapBy('submissions', 'id'),
 
+  userAssessments: Ember.computed.filter('assessments', function(assessment) {
+    var userId = this.get('user.id');
+    return assessment.get('assessor.id') === userId;
+  }),
+
+  unfinishedUserAssessments: Ember.computed.filter('assessments', function(assessment) {
+    var userId = this.get('user.id');
+    return assessment.get('assessor.id') === userId && !assessment.get('published');
+  }),
+
   init: function() {
     this._super();
     this.updateAssessments();
@@ -23,23 +33,18 @@ var SecuredIndexController = Ember.ArrayController.extend(ArrangeableMixin, User
     });
   }.observes('submissionIds'),
 
-  userAssessments: Ember.computed.filter('assessments', function(assessment) {
-    var userId = this.get('user.id');
-    return assessment.get('assessor.id') === userId && !assessment.get('published');
-  }),
-
   submissionsWithUnfinishedAssessment: function() {
     var submissions = this.get('submissions');
-    var assessments = this.get('userAssessments');
+    var assessments = this.get('unfinishedUserAssessments');
     var submissionsWithUserAssessment = assessments.mapBy('submission.id');
     return submissions.filter(function(submission) {
       return submissionsWithUserAssessment.contains(submission.id);
     });
-  }.property('userAssessments'),
+  }.property('unfinishedUserAssessments'),
 
   submissionsNeedingAssessment: function() {
     var submissions = this.get('submissions');
-    var assessments = this.assessments.get('content') || [];
+    var assessments = this.get('userAssessments');
     var submissionsWithUserAssessment = assessments.mapBy('submission.id');
     return submissions.filter(function(submission) {
       return !submissionsWithUserAssessment.contains(submission.id);
@@ -73,7 +78,10 @@ var SecuredIndexController = Ember.ArrayController.extend(ArrangeableMixin, User
     if (this.get('isRecruiter')) {
       return this.get('length') === 0;
     } else {
-      return Ember.isEmpty(this.get('submissionsNeedingAssessment')) && Ember.isEmpty(this.get('submissionsWithUnfinishedAssessment'));
+      console.log('need assessment: ' + Ember.isEmpty(this.get('submissionsNeedingAssessment')));
+      console.log('unfinished assessment: ' + Ember.isEmpty(this.get('submissionsWithUnfinishedAssessment')));
+
+      var notifications = Ember.isEmpty(this.get('submissionsNeedingAssessment')) && Ember.isEmpty(this.get('submissionsWithUnfinishedAssessment'));
     }
   }.property('submissionsNeedingAssessment', 'submissionsWithUnfinishedAssessment')
 
