@@ -78,10 +78,7 @@ var SecuredIndexController = Ember.ArrayController.extend(ArrangeableMixin, User
     if (this.get('isRecruiter')) {
       return this.get('length') === 0;
     } else {
-      console.log('need assessment: ' + Ember.isEmpty(this.get('submissionsNeedingAssessment')));
-      console.log('unfinished assessment: ' + Ember.isEmpty(this.get('submissionsWithUnfinishedAssessment')));
-
-      var notifications = Ember.isEmpty(this.get('submissionsNeedingAssessment')) && Ember.isEmpty(this.get('submissionsWithUnfinishedAssessment'));
+      return Ember.isEmpty(this.get('submissionsNeedingAssessment')) && Ember.isEmpty(this.get('submissionsWithUnfinishedAssessment'));
     }
   }.property('submissionsNeedingAssessment', 'submissionsWithUnfinishedAssessment')
 
