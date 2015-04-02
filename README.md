@@ -47,6 +47,12 @@ Make use of the many generators for code, try `./node_modules/.bin/ember help ge
 
 We're using the [Heroku Buildpack for Ember CLI Applications](https://github.com/tonycoco/heroku-buildpack-ember-cli) so simply use `git push heroku master`.
 
+This buildpack caches npm & bower packages. So if you want to purge the cache and rebuild you can do the following commands:
+
+* `heroku plugins:install https://github.com/heroku/heroku-repo.git` (already done - only needs to be done once)
+* `heroku repo:purge_cache -a codetestbot`
+* `heroku repo:rebuild -a codetestbot`
+
 ## Further Reading / Useful Links
 
 * ember: http://emberjs.com/
