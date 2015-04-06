@@ -32,6 +32,12 @@ module.exports = function(environment) {
     ENV.NEW_SESSION_URL = 'http://localhost:3000/sessions/new';
   }
 
+  if (environment === 'staging') {
+      ENV.SERVER_HOST = 'https://codetestbotserver-staging.herokuapp.com';
+      ENV.APP_HOST = 'https://codetestbot-staging.herokuapp.com';
+      ENV.NEW_SESSION_URL = 'https://codetestbotserver-staging.herokuapp.com/sessions/new';
+  }  
+
   if (environment === 'test') {
     ENV.baseURL = '/'; // Testem prefers this...
     ENV.SERVER_HOST = 'http://localhost:3000';
@@ -44,12 +50,6 @@ module.exports = function(environment) {
       ENV.APP_HOST = 'https://codetestbot.herokuapp.com';
       ENV.NEW_SESSION_URL = 'https://codetestbotserver.herokuapp.com/sessions/new';
   }
-
-  if (environment === 'staging') {
-      ENV.SERVER_HOST = 'https://codetestbotserver-staging.herokuapp.com';
-      ENV.APP_HOST = 'https://codetestbot-staging.herokuapp.com';
-      ENV.NEW_SESSION_URL = 'https://codetestbotserver-staging.herokuapp.com/sessions/new';
-  }  
 
   return ENV;
 };
