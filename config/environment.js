@@ -45,5 +45,11 @@ module.exports = function(environment) {
       ENV.NEW_SESSION_URL = 'https://codetestbotserver.herokuapp.com/sessions/new';
   }
 
+  if (environment === 'staging') {
+      ENV.SERVER_HOST = 'https://codetestbotserver-staging.herokuapp.com';
+      ENV.APP_HOST = 'https://codetestbot-staging.herokuapp.com';
+      ENV.NEW_SESSION_URL = 'https://codetestbotserver-staging.herokuapp.com/sessions/new';
+  }  
+
   return ENV;
 };
