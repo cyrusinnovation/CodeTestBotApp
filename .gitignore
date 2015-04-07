@@ -11,6 +11,7 @@
 /libpeerconnection.log
 npm-debug.log
 testem.log
+/.idea
 
 node_modules/ember-cli/node_modules/bower/node_modules/.bin/
 node_modules/ember-cli/node_modules/bower/node_modules/cardinal/node_modules/redeyed/node_modules/.bin/
