@@ -52,8 +52,8 @@ body {
 }
 
 .markdown-info {
-  float: right;
-  padding: 10px 15px;
+  position: absolute;
+  right: 18px;
 }
 
 .markdown-info > a > img {

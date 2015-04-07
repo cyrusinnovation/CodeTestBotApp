@@ -73,6 +73,10 @@
             <p>Please provide your feedback about the submission below in the form of a pros and cons list. Keep
                 comments specific and constructive, remembering that this feedback will be organized and summarized by
                 our recruiting team and shared with the candidate.</p>
+            <ul>
+              <li><em>Separate paragraphs with a blank line.</em></li>
+              <li><em>Use "-&lt;Space&gt;" or "*&lt;Space&gt;" to create bulleted lists.</em></li>
+            </ul>
 
             <span class="markdown-info"><a href="https://help.github.com/articles/github-flavored-markdown"><img
                     src="/assets/images/32x20.png" width="24px"/> Markdown Syntax</a></span>
@@ -80,13 +84,17 @@
             <div class="tab-content">
                 <div class="tab-pane active" id="write">
                     <label>Pros</label>
-                  {{textarea value=pros rows="6" class="form-control pros"}}
+                    {{textarea value=pros rows="6" class="form-control pros"}}
+                    <br/>
 
                     <label>Cons</label>
-                  {{textarea value=cons rows="6" class="form-control cons"}}
+                    <br/>
+                    {{textarea value=cons rows="6" class="form-control cons"}}
+                    <br/>
 
-                    <label>Notes</label>
-                  {{textarea value=notes rows="6" class="form-control notes"}}
+                    <label>Notes <em>(INTERNAL ONLY)</em></label>
+                    <br/>
+                    {{textarea value=notes rows="6" class="form-control notes"}}
                 </div>
                 <br/>
 
