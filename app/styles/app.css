@@ -205,6 +205,10 @@ table.active.recruiter th.time {
   font-weight: bold;
 }
 
+.required-label {
+  color: red;
+}
+
 
 /* MEDIA QUERIES */
 
@@ -221,5 +225,9 @@ table.active.recruiter th.time {
     width: 300px;
     margin-top: 5px;
   }
+}
+
+div#write textarea{
+  margin-bottom: 10px;
 }
 
