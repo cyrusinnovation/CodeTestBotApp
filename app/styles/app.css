@@ -201,6 +201,9 @@ table.active.recruiter th.time {
   border-radius: 4px;
   padding-left: 12px;
 }
+.markdown-pane div{
+  font-weight: bold;
+}
 
 
 /* MEDIA QUERIES */
@@ -210,7 +213,7 @@ table.active.recruiter th.time {
   .navbar-logo img {
     width: 365px;
     margin-top: 2px;
-  }  
+  }
 }
 
 @media(max-width: 475px){

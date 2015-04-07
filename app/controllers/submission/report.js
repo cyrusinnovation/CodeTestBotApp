@@ -60,7 +60,10 @@ export default Ember.ObjectController.extend({
                 previousValue += '\n\n';
             }
 
-            return previousValue + '##### Developer ' + (index + 1) + ' wrote:\n\n' + item.get('notes');
+            return previousValue + '##### Developer ' + (index + 1) + ' wrote:\n\n' +
+              '\n\n**Pros:**\n\n' + item.get('pros') +
+              '\n\n**Cons:**\n\n' + item.get('cons') +
+              '\n\n**Notes:**\n\n' + item.get('notes');
         }, '');
 
         var renderer = new marked.Renderer();

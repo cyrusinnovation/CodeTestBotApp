@@ -1,10 +1,11 @@
 <form class="form-horizontal form-horizontal-narrow" role="form">
-      <fieldset>
+    <fieldset>
         <legend>Submission</legend>
         <div class="form-group">
-          <label class="col-sm-2 control-label">Language</label>
-          <div class="col-sm-2">
-            {{view Ember.Select viewName="select"
+            <label class="col-sm-2 control-label">Language</label>
+
+            <div class="col-sm-2">
+              {{view Ember.Select viewName="select"
               content=languages
               optionLabelPath="content.name"
               optionValuePath="content.id"
@@ -12,13 +13,14 @@
               selection=selectedLanguage
               disabled="disabled"
               class="form-control col-sm-2 language"}}
-          </div>
+            </div>
         </div>
 
         <div class="form-group">
-          <label class="col-sm-2 control-label">Level</label>
-          <div class="col-sm-2">
-            {{view Ember.Select viewName="select"
+            <label class="col-sm-2 control-label">Level</label>
+
+            <div class="col-sm-2">
+              {{view Ember.Select viewName="select"
               content=levels
               optionLabelPath="content.text"
               optionValuePath="content.id"
@@ -26,71 +28,90 @@
               selection=selectedLevel
               disabled="disabled"
               class="form-control level"}}
-          </div>
+            </div>
         </div>
 
         <div class="form-group">
-          <label class="col-sm-2 control-label">File</label>
-          <div class="col-sm-2">
-            <a class="btn btn-success zipfile" {{bind-attr href=submission.zipfile}}><i class="fa fa-download"></i>&nbsp;Download</a>
-          </div>
+            <label class="col-sm-2 control-label">File</label>
+
+            <div class="col-sm-2">
+                <a class="btn btn-success zipfile" {{bind-attr href=submission.zipfile}}><i class="fa fa-download"></i>&nbsp;Download</a>
+            </div>
         </div>
 
         <div class="form-group">
-          <label class="col-sm-2 control-label">Email Text</label>
-          <div class="col-sm-2">
-            <p class="form-control-static">{{submission.emailText}}</p>
-          </div>
+            <label class="col-sm-2 control-label">Email Text</label>
+
+            <div class="col-sm-2">
+                <p class="form-control-static">{{submission.emailText}}</p>
+            </div>
         </div>
 
         <div class="form-group">
-          <label class="col-sm-2 control-label">Source of Referral</label>
-          <div class="col-sm-10">
-            {{#if submission.source}}
-            <p class="form-control-static">{{submission.source}}</p>
-            {{else}}
-            <p class="form-control-static">N/A (source was not provided)</p>
-            {{/if}}
-          </div>
-        </div> 
+            <label class="col-sm-2 control-label">Source of Referral</label>
 
-      </fieldset>
-    </form>
+            <div class="col-sm-10">
+              {{#if submission.source}}
+                  <p class="form-control-static">{{submission.source}}</p>
+              {{else}}
+                  <p class="form-control-static">N/A (source was not provided)</p>
+              {{/if}}
+            </div>
+        </div>
 
-    <br/>
+    </fieldset>
+</form>
 
-    <form role="form">
-      <fieldset>
+<br/>
+
+<form role="form">
+    <fieldset>
         <legend>Assessment</legend>
 
         <div class="form-group">
-          <label>Notes</label>
 
-          <p>Please provide your feedback about the submission below in the form of a pros and cons list. Keep comments specific and constructive, remembering that this feedback will be organized and summarized by our recruiting team and shared with the candidate.</p>
+            <p>Please provide your feedback about the submission below in the form of a pros and cons list. Keep
+                comments specific and constructive, remembering that this feedback will be organized and summarized by
+                our recruiting team and shared with the candidate.</p>
 
-          <span class="markdown-info"><a href="https://help.github.com/articles/github-flavored-markdown"><img src="/assets/images/32x20.png" width="24px" /> Markdown Syntax</a></span>
-          <div class="tab-content">
-            <div class="tab-pane active" id="write">
-              {{textarea value=notes rows="6" class="form-control notes"}}
+            <span class="markdown-info"><a href="https://help.github.com/articles/github-flavored-markdown"><img
+                    src="/assets/images/32x20.png" width="24px"/> Markdown Syntax</a></span>
+
+            <div class="tab-content">
+                <div class="tab-pane active" id="write">
+                    <label>Pros</label>
+                  {{textarea value=pros rows="6" class="form-control pros"}}
+
+                    <label>Cons</label>
+                  {{textarea value=cons rows="6" class="form-control cons"}}
+
+                    <label>Notes</label>
+                  {{textarea value=notes rows="6" class="form-control notes"}}
+                </div>
+                <br/>
+
+                <label>Live Markdown Preview</label>
             </div>
-            <br />
-
-          <label>Live Markdown Preview</label>
-          </div>
 
             <div class="tab-content">
                 <div class="markdown-pane" id="write">
-                    <br />
+                    <div>Pros:</div>
+                  {{render-marked pros}}
+                    <div>Cons:</div>
+                  {{render-marked cons}}
+                    <div>Notes:</div>
                   {{render-marked notes}}
                 </div>
             </div>
 
-          <hr />
+            <hr/>
         </div>
 
         <div class="form-group">
-          <label>Recommendation</label>
-          <p>Considering your comments above, make a recommendation on whether or not you think the candidate should advance to the next step of the interview process.</p>
+            <label>Recommendation</label>
+
+            <p>Considering your comments above, make a recommendation on whether or not you think the candidate should
+                advance to the next step of the interview process.</p>
           {{view Ember.Select viewName="select"
           content=scoreOptions
           optionLabelPath="content.text"
@@ -100,20 +121,23 @@
           class="form-control score"}}
         </div>
 
-        {{#if showExemplaryOption}}
-        <div class="checkbox">
-          <label>
-            {{input type="checkbox" checked=exemplary}} Furthermore, I think this submission is exemplary for this language and candidate level.
-          </label>
-        </div>
-        {{/if}}
+      {{#if showExemplaryOption}}
+          <div class="checkbox">
+              <label>
+                {{input type="checkbox" checked=exemplary}} Furthermore, I think this submission is exemplary for this
+                  language and candidate level.
+              </label>
+          </div>
+      {{/if}}
         <div class="row">
-          <div class="col-md-2 col-md-offset-9">
-            {{view 'saving-indicator'}}
-          </div>
-          <div class="col-md-1">
-            <button class="btn btn-success create" {{bind-attr disabled=isFormIncomplete}} {{action saveAssessment}}>Save</button>
-          </div>
+            <div class="col-md-2 col-md-offset-9">
+              {{view 'saving-indicator'}}
+            </div>
+            <div class="col-md-1">
+                <button class="btn btn-success create" {{bind-attr disabled=isFormIncomplete}} {{action saveAssessment}}>
+                    Save
+                </button>
+            </div>
         </div>
-      </fieldset>
-    </form>
+    </fieldset>
+</form>
