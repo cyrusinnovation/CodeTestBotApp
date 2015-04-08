@@ -56,5 +56,3 @@ node_modules/ember-cli/node_modules/testem/node_modules/tap/node_modules/.bin/
 node_modules/ember-cli/node_modules/testem/node_modules/tap/node_modules/runforcover/node_modules/bunker/node_modules/burrito/node_modules/.bin/
 node_modules/ember-cli/node_modules/tiny-lr/node_modules/noptify/node_modules/.bin/
 
-/node_modules/phantomjs/lib/location.js
-/node_modules/phantomjs/lib/phantom/
