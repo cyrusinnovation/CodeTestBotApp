@@ -2,12 +2,8 @@ language: node_js
 
 sudo: false
 
-cache:
-  directories:
-    - node_modules
-
 install:
-  - npm install
+  - npm rebuild
 
 script:
   - npm test
