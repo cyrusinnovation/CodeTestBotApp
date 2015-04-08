@@ -28,22 +28,20 @@ DS.Model.extend({
 
   notesDisplay: function () {
     var renderer = new marked.Renderer();
-    var notes_value = this.get('notes');
-      if(notes_value) {
-      return marked(notes_value, {renderer: renderer});
-    }else{
-      return '';
-    }
+    var notes_value = this.get('notes') || '';
+    return marked(notes_value, {renderer: renderer});
   }.property('notes'),
 
   prosDisplay: function () {
     var renderer = new marked.Renderer();
-    return marked(this.get('pros'), {renderer: renderer});
+    var text = this.get('pros') || '';
+    return marked(text, {renderer: renderer});
   }.property('pros'),
 
   consDisplay: function () {
     var renderer = new marked.Renderer();
-    return marked(this.get('cons'), {renderer: renderer});
+    var text = this.get('cons') || '';
+    return marked(text, {renderer: renderer});
   }.property('cons'),
 
   clearExemplaryFlag: function () {
