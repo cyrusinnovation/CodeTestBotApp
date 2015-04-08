@@ -3,7 +3,7 @@ import startApp from '../helpers/start-app';
 
 var App;
 
-module('Acceptance: Load Thanks Page', {
+module('Integration: Load Thanks Page', {
   setup: function() {
     App = startApp();
   },

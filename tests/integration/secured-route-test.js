@@ -3,7 +3,7 @@ import CodeTestBotApp from 'code-test-bot-app/app';
 import SecuredRoute from 'code-test-bot-app/routes/secured';
 import startApp from '../helpers/start-app';
 
-module("Unit: routes/secured", {
+module("Integration: routes/secured", {
   setup: function() {
     window.CodeTestBotApp = startApp();
   },
