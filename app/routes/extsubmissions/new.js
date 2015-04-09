@@ -3,7 +3,7 @@ import Ember from 'ember';
 export default Ember.Route.extend({
   model: function() {
     return Ember.Object.create({
-      extsubmission: this.store.createRecord('extsubmission'),
+      extsubmission: this.store.createRecord('submission'),
       languages: this.store.find('language'),
       levels: this.store.find('level')
     });
@@ -11,7 +11,7 @@ export default Ember.Route.extend({
 
   actions: {
     willTransition: function() {
-      var submission = this.controller.get('extsubmission');
+      var submission = this.controller.get('submission');
       if (submission.get('isNew')) {
         submission.deleteRecord();
       }
