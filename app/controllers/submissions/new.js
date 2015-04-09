@@ -1,9 +1,9 @@
 import Ember from 'ember';
 
 export default Ember.ObjectController.extend({
+    isExternal: false,
     breadCrumb: 'New Submission',
     postSubmitURL: '/submissions',
-    isExternal: false,
     submitter: "Candidate",
     levelPrompt: "Select candidate level",
     languageLabel: "Submission Language",

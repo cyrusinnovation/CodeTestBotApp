@@ -1,9 +1,9 @@
 import SubmissionNewController from 'code-test-bot-app/controllers/submissions/new';
 
 export default SubmissionNewController.extend({
+  isExternal: true,
   breadCrumb: 'New Applicant',
   postSubmitURL: '/thanks',
-  isExternal: true,
   submitter: 'Your',
   levelPrompt: "Select level of application",
   languageLabel: "Programming Language",
