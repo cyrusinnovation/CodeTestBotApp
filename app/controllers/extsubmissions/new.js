@@ -16,9 +16,9 @@ export default Ember.ObjectController.extend({
   }.property('candidateName', 'candidateEmail'),
 
   isSubmissionIncomplete: function() {
-    return Ember.isEmpty(this.get('extsubmission.emailText')) ||
-      Ember.isEmpty(this.get('extsubmission.zipfile'));
-  }.property('extsubmission.emailText', 'extsubmission.zipfile'),
+    return Ember.isEmpty(this.get('submission.emailText')) ||
+      Ember.isEmpty(this.get('submission.zipfile'));
+  }.property('submission.emailText', 'submission.zipfile'),
 
   findCandidate: function() {
     return this.store.find('candidate', { email: this.get('candidateEmail') }).then(function(results) {
@@ -27,7 +27,7 @@ export default Ember.ObjectController.extend({
   },
 
   createSubmission: function() {
-    var submission = this.get('extsubmission');
+    var submission = this.get('submission');
     submission.set('candidateName', this.get('candidateName'));
     submission.set('candidateEmail', this.get('candidateEmail'));
     submission.set('level', this.get('selectedLevel'));

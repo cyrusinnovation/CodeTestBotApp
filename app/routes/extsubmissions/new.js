@@ -3,7 +3,7 @@ import Ember from 'ember';
 export default Ember.Route.extend({
   model: function() {
     return Ember.Object.create({
-      extsubmission: this.store.createRecord('submission'),
+      submission: this.store.createRecord('submission'),
       languages: this.store.find('language'),
       levels: this.store.find('level')
     });
