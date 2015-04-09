@@ -1,150 +1,150 @@
 <div class="row">
-    <div class="col-md-12">
+  <div class="col-md-12">
     {{#if isExternal}}
-        <p class="instructions-link text-right">Click <a href="http://www.cyrusinnovation.com/code-test/">here</a> to view submission instructions.</p>
+    <p class="instructions-link text-right">Click <a href="http://www.cyrusinnovation.com/code-test/">here</a> to view submission instructions.</p>
     {{/if}}
-        <h1>New Submission</h1>
+    <h1>New Submission</h1>
 
-        <form class="form-horizontal" role="form">
-{{#if isExternal}}
-            <div class="form-group">
-                <label class="col-sm-2 control-label">Your Name</label>
-                <div class="col-sm-4">
-                  {{input value=candidateName placeholder="Full Name" class="form-control"}}
-                </div>
-            </div>
+    <form class="form-horizontal" role="form">
+      {{#if isExternal}}
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Your Name</label>
+        <div class="col-sm-4">
+          {{input value=candidateName placeholder="Full Name" class="form-control"}}
+        </div>
+      </div>
 
-            <div class="form-group">
-                <label class="col-sm-2 control-label">Your Email</label>
-                <div class="col-sm-4">
-                  {{input value=candidateEmail placeholder="Email Address" class="form-control"}}
-                </div>
-            </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Your Email</label>
+        <div class="col-sm-4">
+          {{input value=candidateEmail placeholder="Email Address" class="form-control"}}
+        </div>
+      </div>
 
-            <div class="form-group">
-                <label class="col-sm-2 control-label">Your Level</label>
-                <div class="col-sm-4">
-                  {{view Ember.Select viewName="select"
-                  contentBinding="levels"
-                  optionLabelPath="content.text"
-                  optionValuePath="content.id"
-                  prompt="Select level of application"
-                  selectionBinding="selectedLevel"
-                  class="form-control"}}
-                </div>
-            </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Your Level</label>
+        <div class="col-sm-4">
+          {{view Ember.Select viewName="select"
+          contentBinding="levels"
+          optionLabelPath="content.text"
+          optionValuePath="content.id"
+          prompt="Select level of application"
+          selectionBinding="selectedLevel"
+          class="form-control"}}
+        </div>
+      </div>
 
-            <div class="form-group">
-                <label class="col-sm-2 control-label">Programming Language</label>
-                <div class="col-sm-4">
-                  {{view Ember.Select viewName="select"
-                  id="language-select"
-                  contentBinding="languages"
-                  optionLabelPath="content.name"
-                  optionValuePath="content.id"
-                  prompt="Select the language your submission uses"
-                  selectionBinding="selectedLanguage"
-                  class="form-control"}}
-                </div>
-            </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Programming Language</label>
+        <div class="col-sm-4">
+          {{view Ember.Select viewName="select"
+          id="language-select"
+          contentBinding="languages"
+          optionLabelPath="content.name"
+          optionValuePath="content.id"
+          prompt="Select the language your submission uses"
+          selectionBinding="selectedLanguage"
+          class="form-control"}}
+        </div>
+      </div>
 
-            <div class="form-group">
-              <label class="col-sm-2 control-label">How Did You Find Us?</label>
-              <div class="col-sm-4">
-                {{view 'select' 
-                    content=sources
-                    selectionBinding="selectedSource"
-                    prompt="Select a source"
-                    class='form-control'}}
-              </div>
-            </div>          
+      <div class="form-group">
+        <label class="col-sm-2 control-label">How Did You Find Us?</label>
+        <div class="col-sm-4">
+          {{view 'select' 
+          content=sources
+          selectionBinding="selectedSource"
+          prompt="Select a source"
+          class='form-control'}}
+        </div>
+      </div>          
 
-            <div class="form-group">
-                <label class="col-sm-2 control-label">Notes</label>
-                <div class="col-sm-6">
-                  {{textarea value=submission.emailText rows="6" placeholder="Use this space for any general comments related to your submission that aren't already included in the README." id="email-text" class="form-control"}}
-                </div>
-            </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Notes</label>
+        <div class="col-sm-6">
+          {{textarea value=submission.emailText rows="6" placeholder="Use this space for any general comments related to your submission that aren't already included in the README." id="email-text" class="form-control"}}
+        </div>
+      </div>
 
-            <div class="form-group">
-                <label class="col-sm-2 control-label">Submission Zipfile</label>
-                <div class="col-sm-6">
-                  {{view 'file-upload' name="zipfile" file=submission.zipfile id="zipfile" fileName=submission.zipfileName class="form-control"}}
-                </div>
-            </div>
-{{else}}
-          <div class="form-group">
-            <label class="col-sm-2 control-label">Candidate Name</label>
-            <div class="col-sm-4">
-              {{input value=candidateName placeholder="Name" class="form-control"}}
-            </div>
-          </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Submission Zipfile</label>
+        <div class="col-sm-6">
+          {{view 'file-upload' name="zipfile" file=submission.zipfile id="zipfile" fileName=submission.zipfileName class="form-control"}}
+        </div>
+      </div>
+      {{else}}
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Candidate Name</label>
+        <div class="col-sm-4">
+          {{input value=candidateName placeholder="Name" class="form-control"}}
+        </div>
+      </div>
 
-          <div class="form-group">
-            <label class="col-sm-2 control-label">Candidate Email</label>
-            <div class="col-sm-4">
-              {{input value=candidateEmail placeholder="Email Address" class="form-control"}}
-            </div>
-          </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Candidate Email</label>
+        <div class="col-sm-4">
+          {{input value=candidateEmail placeholder="Email Address" class="form-control"}}
+        </div>
+      </div>
 
-          <div class="form-group">
-            <label class="col-sm-2 control-label">Candidate Level</label>
-            <div class="col-sm-4">
-              {{view Ember.Select viewName="select"
-              contentBinding="levels"
-              optionLabelPath="content.text"
-              optionValuePath="content.id"
-              prompt="Select candidate level:"
-              selectionBinding="selectedLevel"
-              class="form-control"}}
-            </div>
-          </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Candidate Level</label>
+        <div class="col-sm-4">
+          {{view Ember.Select viewName="select"
+          contentBinding="levels"
+          optionLabelPath="content.text"
+          optionValuePath="content.id"
+          prompt="Select candidate level:"
+          selectionBinding="selectedLevel"
+          class="form-control"}}
+        </div>
+      </div>
 
-          <div class="form-group">
-            <label class="col-sm-2 control-label">Submission Language</label>
-            <div class="col-sm-4">
-              {{view Ember.Select viewName="select"
-                  id="language-select"
-                  contentBinding="languages"
-                  optionLabelPath="content.name"
-                  optionValuePath="content.id"
-                  prompt="Select a language:"
-                  selectionBinding="selectedLanguage"
-                  class="form-control"}}
-            </div>
-          </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Submission Language</label>
+        <div class="col-sm-4">
+          {{view Ember.Select viewName="select"
+          id="language-select"
+          contentBinding="languages"
+          optionLabelPath="content.name"
+          optionValuePath="content.id"
+          prompt="Select a language:"
+          selectionBinding="selectedLanguage"
+          class="form-control"}}
+        </div>
+      </div>
 
-          <div class="form-group">
-            <label class="col-sm-2 control-label">Source of Referral</label>
-            <div class="col-sm-4">
-              {{view 'select' 
-                  content=sources
-                  selectionBinding="selectedSource"
-                  prompt="Select a source"
-                  class='form-control'}}
-            </div>
-          </div>          
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Source of Referral</label>
+        <div class="col-sm-4">
+          {{view 'select' 
+          content=sources
+          selectionBinding="selectedSource"
+          prompt="Select a source"
+          class='form-control'}}
+        </div>
+      </div>          
 
-          <div class="form-group">
-            <label class="col-sm-2 control-label">Email Text</label>
-            <div class="col-sm-6">
-              <p>Copy and paste the email text or any instructions given by the candidate.</p>
-              {{textarea value=submission.emailText rows="6" placeholder="Email text or instructions" id="email-text" class="form-control"}}
-            </div>
-          </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Email Text</label>
+        <div class="col-sm-6">
+          <p>Copy and paste the email text or any instructions given by the candidate.</p>
+          {{textarea value=submission.emailText rows="6" placeholder="Email text or instructions" id="email-text" class="form-control"}}
+        </div>
+      </div>
 
-          <div class="form-group">
-            <label class="col-sm-2 control-label">Zipfile</label>
-            <div class="col-sm-6">
-              <p>Select the zipfile provided by the candidate.</p>
-              {{view 'file-upload' name="zipfile" file=submission.zipfile id="zipfile" fileName=submission.zipfileName class="form-control"}}
-            </div>
-          </div>
-{{/if}}
-        </form>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Zipfile</label>
+        <div class="col-sm-6">
+          <p>Select the zipfile provided by the candidate.</p>
+          {{view 'file-upload' name="zipfile" file=submission.zipfile id="zipfile" fileName=submission.zipfileName class="form-control"}}
+        </div>
+      </div>
+      {{/if}}
+    </form>
 
-        <hr/>
+    <hr/>
 
-        <button type="button" class="btn btn-success pull-right" {{bind-attr disabled=isFormIncomplete}} {{action submit}}>Create New Codetest</button>
-    </div>
+    <button type="button" class="btn btn-success pull-right" {{bind-attr disabled=isFormIncomplete}} {{action submit}}>Create New Codetest</button>
+  </div>
 </div>
