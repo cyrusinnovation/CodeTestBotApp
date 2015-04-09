@@ -9,14 +9,14 @@
       <div class="form-group">
         <label class="col-sm-2 control-label">{{submitter}} Name</label>
         <div class="col-sm-4">
-          {{input value=candidateName placeholder="Full Name" class="form-control"}}
+          {{input value=submission.candidateName placeholder="Full Name" class="form-control"}}
         </div>
       </div>
 
       <div class="form-group">
         <label class="col-sm-2 control-label">{{submitter}} Email</label>
         <div class="col-sm-4">
-          {{input value=candidateEmail placeholder="Email Address" class="form-control"}}
+          {{input value=submission.candidateEmail placeholder="Email Address" class="form-control"}}
         </div>
       </div>
 
@@ -28,7 +28,7 @@
           optionLabelPath="content.text"
           optionValuePath="content.id"
           prompt=levelPrompt
-          selectionBinding="selectedLevel"
+          selectionBinding="submission.level"
           class="form-control"}}
         </div>
       </div>
@@ -42,7 +42,7 @@
           optionLabelPath="content.name"
           optionValuePath="content.id"
           prompt=languagePrompt
-          selectionBinding="selectedLanguage"
+          selectionBinding="submission.language"
           class="form-control"}}
         </div>
       </div>
@@ -52,7 +52,7 @@
         <div class="col-sm-4">
           {{view 'select' 
           content=sources
-          selectionBinding="selectedSource"
+          selectionBinding="submission.source"
           prompt="Select a source"
           class='form-control'}}
         </div>
