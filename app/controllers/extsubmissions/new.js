@@ -2,5 +2,6 @@ import SubmissionNewController from 'code-test-bot-app/controllers/submissions/n
 
 export default SubmissionNewController.extend({
   breadCrumb: 'New Applicant',
-  postSubmitURL: '/thanks'
+  postSubmitURL: '/thanks',
+  isExternal: true
 });

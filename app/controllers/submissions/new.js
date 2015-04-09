@@ -3,6 +3,7 @@ import Ember from 'ember';
 export default Ember.ObjectController.extend({
     breadCrumb: 'New Submission',
     postSubmitURL: '/submissions',
+    isExternal: false,
 
     candidateName: null,
     candidateEmail: null,
