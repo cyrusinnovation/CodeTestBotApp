@@ -2,6 +2,8 @@ import Ember from 'ember';
 
 export default Ember.ObjectController.extend({
     breadCrumb: 'New Submission',
+    postSubmitURL: '/submissions',
+
     candidateName: null,
     candidateEmail: null,
     selectedLanguage: null,
@@ -40,7 +42,7 @@ export default Ember.ObjectController.extend({
         submit: function() {
             var self = this;
             self.createSubmission() .then(function() {
-                self.transitionToRoute('/submissions');
+                self.transitionToRoute(self.get('postSubmitURL'));
             });
         }
     }
