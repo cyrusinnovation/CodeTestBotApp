@@ -11,9 +11,7 @@ Router.map(function () {
     this.route('complete');
   });
 
-  this.resource('extsubmissions', function () {
-    this.route('new');
-  });
+  this.route('extsubmissions/new');
 
   this.resource('secured', {path: '/'}, function () {
     this.route('edit');
