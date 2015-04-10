@@ -12,6 +12,7 @@ export default Ember.ObjectController.extend({
     notesLabel: "Email Text",
     notesPlaceholder: "Copy and paste the email text or any instructions given by the candidate",
     zipfileLabel: "Zipfile",
+    resumefileLabel: "Resume File",
 
     sources: ['LinkedIn', 'StackOverflow', 'Whitetruffle', 'Switch', 'Recuiter / Agency', 'Referral', 'Other'],
 

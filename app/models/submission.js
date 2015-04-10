@@ -13,6 +13,8 @@ export default DS.Model.extend({
     updatedAt: DS.attr(),
     averageScore: DS.attr(),
     source: DS.attr(),
+    resumefile: DS.attr(),
+    resumefileName: DS.attr(),
 
     level: DS.belongsTo('level'),
     language: DS.belongsTo('language'),

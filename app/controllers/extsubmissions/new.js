@@ -11,5 +11,6 @@ export default SubmissionNewController.extend({
   sourceLabel: "How Did You Find Us?",
   notesLabel: "Notes",
   notesPlaceholder: "Use this space for any general comments related to your submission that aren't already included in the README.",
-  zipfileLabel: "Submission Zipfile"
+  zipfileLabel: "Submission Zipfile",
+  resumefileLabel: "Upload Resume"
 });
