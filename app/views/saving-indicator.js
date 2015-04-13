@@ -11,21 +11,12 @@ export default Ember.View.extend({
     },
 
     onSaveStatusChange: function() {
-        if (this.get('controller.isSaving')) {
-            this.set('message', 'Saving...');
-            this.spinner.show();
-            this.$().show();
-        } else {
-            this.set('message', 'Changes saved.');
-            this.spinner.hide();
-            if (this.$().is(':visible')) {
-                Ember.run.later(this.$(), function() {
-                    if (this) {
-                        this.fadeOut('slow');
-                    }
-                }, 2000);
-            }
-        }
+      this.$().show();
+      var timestamp = this.get('controller.updatedAt');
+      var formattedTime = timestamp.toLocaleTimeString() +
+          ' ' + timestamp.toLocaleDateString();
+      this.set('message', 'Saved at ' + formattedTime);
+      this.spinner.hide();
     }.observes('controller.isSaving')
 });
 

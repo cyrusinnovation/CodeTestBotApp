@@ -10,7 +10,7 @@ DS.Model.extend({
   notes: DS.attr(),
   published: DS.attr(),
   createdAt: DS.attr(),
-  updatedAt: DS.attr(),
+  updatedAt: DS.attr('date'),
   submission: DS.belongsTo('submission'),
   assessor: DS.belongsTo('assessor'),
 
