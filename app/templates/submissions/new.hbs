@@ -1,8 +1,5 @@
 <div class="row">
   <div class="col-md-12">
-    {{#if isExternal}}
-    <p class="instructions-link text-right">Click <a href="http://www.cyrusinnovation.com/code-test/">here</a> to view submission instructions.</p>
-    {{/if}}
     <h1>New Submission</h1>
 
     <form class="form-horizontal" role="form">
@@ -50,7 +47,7 @@
       <div class="form-group">
         <label class="col-sm-2 control-label">{{sourceLabel}}</label>
         <div class="col-sm-4">
-          {{view 'select' 
+          {{view 'select'
           content=sources
           selectionBinding="submission.source"
           prompt="Select a source"
@@ -85,7 +82,7 @@
           {{/if}}
           {{view 'file-upload' name="resumefile"  id="resumefile" fileName=submission.resumefileName file=submission.resumefile class="form-control"}}
         </div>
-      </div>      
+      </div>
     </form>
 
     <hr/>
