@@ -56,6 +56,14 @@
       </div>
 
       <div class="form-group">
+        <label class="col-sm-2 control-label">GitHub Profile URL</label>
+
+        <div class="col-sm-4">
+          {{input value=submission.github placeholder="URL" class="form-control"}}
+        </div>
+      </div>
+
+      <div class="form-group">
         <label class="col-sm-2 control-label">{{notesLabel}}</label>
         <div class="col-sm-6">
           {{textarea value=submission.emailText rows="6" placeholder=notesPlaceholder id="email-text" class="form-control"}}
