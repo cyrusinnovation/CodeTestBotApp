@@ -14,6 +14,7 @@ export default DS.Model.extend({
   averageScore: DS.attr(),
   source: DS.attr(),
   github: DS.attr(),
+  linkedin: DS.attr(),
   resumefile: DS.attr(),
   resumefileName: DS.attr(),
 

@@ -64,6 +64,14 @@
       </div>
 
       <div class="form-group">
+        <label class="col-sm-2 control-label">LinkedIn URL</label>
+
+        <div class="col-sm-4">
+          {{input value=submission.linkedin placeholder="URL" class="form-control"}}
+        </div>
+      </div>
+
+      <div class="form-group">
         <label class="col-sm-2 control-label">{{notesLabel}}</label>
         <div class="col-sm-6">
           {{textarea value=submission.emailText rows="6" placeholder=notesPlaceholder id="email-text" class="form-control"}}

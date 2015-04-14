@@ -14,6 +14,7 @@ export default DS.Model.extend({
     averageScore: DS.attr(),
     source: DS.attr(),
     github: DS.attr(),
+    linkedin: DS.attr(),
     resumefile: DS.attr(),
     resumefileName: DS.attr(),
 
@@ -47,7 +48,15 @@ export default DS.Model.extend({
         return 'https://' + github;
       }
       return github;
-    }.property('github')
+    }.property('github'),
+
+    linkedinDisplay: function(){
+        var linkedin = this.get('linkedin');
+        if(linkedin.indexOf('https://') !== 0){
+            return 'https://' + linkedin;
+        }
+        return linkedin;
+    }.property('linkedin')
 
 
 });
