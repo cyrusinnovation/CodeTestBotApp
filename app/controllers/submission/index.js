@@ -6,6 +6,10 @@ import Score from 'code-test-bot-app/models/score';
 export default Ember.ObjectController.extend(UserAwareControllerMixin, {
     userHasPublishedAssessment: false,
 
+    canShowPrivateDetails: function() {
+      if (this.get('isRecruiter') || this.get('isInactive')) { return true; }
+    }.property('isRecruiter', 'isInactive'),
+
     assessments: function() {
         var id = this.get('id');
         return this.store.filter('assessment', { submission_id: id, include_unpublished: true }, function(assessment) {

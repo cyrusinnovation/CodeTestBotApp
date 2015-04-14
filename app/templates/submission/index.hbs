@@ -8,7 +8,7 @@
 <div class="row">
   <div class="col-md-10">
     <form class="form-horizontal form-horizontal-narrow" role="form">
-      {{#if isRecruiter}}
+      {{#if canShowPrivateDetails}}
         <div class="form-group">
           <label class="col-sm-2 control-label">Candidate</label>
 
@@ -26,7 +26,7 @@
         </div>
       </div>
 
-      {{#if isRecruiter}}
+      {{#if canShowPrivateDetails}}
         <div class="form-group">
           <label class="col-sm-2 control-label">Resume File</label>
 
@@ -60,7 +60,7 @@
         </div>
       </div>
 
-      {{#if isRecruiter}}
+      {{#if canShowPrivateDetails}}
         <div class="form-group">
           <label class="col-sm-2 control-label">GitHub Profile URL</label>
 
@@ -87,7 +87,7 @@
   </div>
   <div class="col-md-2">
     <div class="btn-group-vertical text-left pull-right">
-      {{#if isRecruiter}}
+      {{#if canShowPrivateDetails}}
         {{#if showReportButton}}
           {{#link-to 'submission.report' class="btn btn-default" }}<i class="fa fa-table"></i>&nbsp;Generate
             Report{{/link-to}}
@@ -120,4 +120,3 @@
     {{/if}}
   </div>
 </div>
-
