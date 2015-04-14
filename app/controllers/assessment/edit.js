@@ -1,9 +1,10 @@
 import Ember from 'ember';
 import UserAwareControllerMixin from 'code-test-bot-app/mixins/user-aware-controller';
+import AutoSaveable from 'code-test-bot-app/mixins/auto-saveable';
 import Score from 'code-test-bot-app/models/score';
 
 export default
-Ember.ObjectController.extend(UserAwareControllerMixin, {
+Ember.ObjectController.extend(UserAwareControllerMixin, AutoSaveable, {
   breadCrumb: 'Edit Asessment',
   selectedLanguage: Ember.computed.alias('content.submission.language'),
   selectedLevel: Ember.computed.alias('content.submission.level'),
@@ -23,6 +24,9 @@ Ember.ObjectController.extend(UserAwareControllerMixin, {
     return Ember.isEmpty(this.get('score')) || Ember.isEmpty(this.get('pros')) || Ember.isEmpty(this.get('cons'));
   }.property('score', 'pros', 'cons'),
 
+  save: function () {
+    this.get('content').save();
+  },
 
   actions: {
     saveAssessment: function () {

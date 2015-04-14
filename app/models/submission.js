@@ -43,8 +43,8 @@ export default DS.Model.extend({
 
     githubDisplay: function(){
       var github = this.get('github');
-      if(github.indexOf('https://') != 0){
-        return 'https://' + github
+      if(github.indexOf('https://') !== 0){
+        return 'https://' + github;
       }
       return github;
     }.property('github')
