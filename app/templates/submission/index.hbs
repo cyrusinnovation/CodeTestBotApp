@@ -66,14 +66,14 @@
 
           <div class="col-sm-10">
             {{#if github}}
-              <p class="form-control-static">{{github}}</p>
+              <a class="form-control-static" {{bind-attr href=githubDisplay}}>{{githubDisplay}}</a>
             {{else}}
               <p class="form-control-static">N/A (url was not provided)</p>
             {{/if}}
           </div>
         </div>
       {{/if}}
-      
+
       {{#if hasPublishedAssessments}}
         <div class="form-group">
           <label class="col-sm-2 control-label">Consensus</label>

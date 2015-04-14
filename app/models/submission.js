@@ -39,7 +39,16 @@ export default DS.Model.extend({
 
     updatedAtDisplay: function() {
         return moment(this.get('updatedAt')).format('l LT');
-    }.property('updatedAt')
+    }.property('updatedAt'),
+
+    githubDisplay: function(){
+      var github = this.get('github');
+      if(github.indexOf('https://') != 0){
+        return 'https://' + github
+      }
+      return github;
+    }.property('github')
+
 
 });
 
