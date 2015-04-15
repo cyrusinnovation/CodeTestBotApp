@@ -5,7 +5,8 @@ function Assert( testContext ) {
 // Assert helpers
 QUnit.assert = Assert.prototype = {
 
-	// Specify the number of expected assertions to guarantee that failed test (no assertions are run at all) don't slip through.
+	// Specify the number of expected assertions to guarantee that failed test
+	// (no assertions are run at all) don't slip through.
 	expect: function( asserts ) {
 		if ( arguments.length === 1 ) {
 			this.test.expected = asserts;
@@ -14,20 +15,51 @@ QUnit.assert = Assert.prototype = {
 		}
 	},
 
+	// Increment this Test's semaphore counter, then return a single-use function that
+	// decrements that counter a maximum of once.
+	async: function() {
+		var test = this.test,
+			popped = false;
+
+		test.semaphore += 1;
+		test.usedAsync = true;
+		pauseProcessing();
+
+		return function done() {
+			if ( !popped ) {
+				test.semaphore -= 1;
+				popped = true;
+				resumeProcessing();
+			} else {
+				test.pushFailure( "Called the callback returned from `assert.async` more than once",
+					sourceFromStacktrace( 2 ) );
+			}
+		};
+	},
+
 	// Exports test.push() to the user API
-	push: function() {
-		var assert = this;
+	push: function( /* result, actual, expected, message */ ) {
+		var assert = this,
+			currentTest = ( assert instanceof Assert && assert.test ) || QUnit.config.current;
 
 		// Backwards compatibility fix.
 		// Allows the direct use of global exported assertions and QUnit.assert.*
 		// Although, it's use is not recommended as it can leak assertions
 		// to other tests from async tests, because we only get a reference to the current test,
 		// not exactly the test where assertion were intended to be called.
-		if ( !QUnit.config.current ) {
+		if ( !currentTest ) {
 			throw new Error( "assertion outside test context, in " + sourceFromStacktrace( 2 ) );
 		}
+
+		if ( currentTest.usedAsync === true && currentTest.semaphore === 0 ) {
+			currentTest.pushFailure( "Assertion after the final `assert.async` was resolved",
+				sourceFromStacktrace( 2 ) );
+
+			// Allow this assertion to continue running anyway...
+		}
+
 		if ( !( assert instanceof Assert ) ) {
-			assert = QUnit.config.current.assert;
+			assert = currentTest.assert;
 		}
 		return assert.test.push.apply( assert.test, arguments );
 	},
@@ -41,11 +73,7 @@ QUnit.assert = Assert.prototype = {
 	ok: function( result, message ) {
 		message = message || ( result ? "okay" : "failed, expected argument to be truthy, was: " +
 			QUnit.dump.parse( result ) );
-		if ( !!result ) {
-			this.push( true, result, true, message );
-		} else {
-			this.test.pushFailure( message, null, result );
-		}
+		this.push( !!result, result, true, message );
 	},
 
 	/**
@@ -53,7 +81,7 @@ QUnit.assert = Assert.prototype = {
 	 * Prints out both actual and expected values.
 	 * @name equal
 	 * @function
-	 * @example equal( format( "Received {0} bytes.", 2), "Received 2 bytes.", "format() replaces {0} with next argument" );
+	 * @example equal( format( "{0} bytes.", 2), "2 bytes.", "replaces {0} with next argument" );
 	 */
 	equal: function( actual, expected, message ) {
 		/*jshint eqeqeq:false */
@@ -178,3 +206,10 @@ QUnit.assert = Assert.prototype = {
 		}
 	}
 };
+
+// Provide an alternative to assert.throws(), for enviroments that consider throws a reserved word
+// Known to us are: Closure Compiler, Narwhal
+(function() {
+	/*jshint sub:true */
+	Assert.prototype.raises = Assert.prototype[ "throws" ];
+}());

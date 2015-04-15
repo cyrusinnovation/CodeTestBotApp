@@ -27,6 +27,6 @@
     "commit": "b6facd4fc23f78f589e36b8250dcd12804e6b20a"
   },
   "_source": "git://github.com/dockyard/qunit-notifications.git",
-  "_target": "~0.0.3",
+  "_target": "~0.0.6",
   "_originalSource": "qunit-notifications"
 }

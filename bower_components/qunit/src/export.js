@@ -48,7 +48,15 @@ if ( typeof window !== "undefined" ) {
 	window.QUnit = QUnit;
 }
 
-// For CommonJS environments, export everything
-if ( typeof module !== "undefined" && module.exports ) {
+// For nodejs
+if ( typeof module !== "undefined" && module && module.exports ) {
 	module.exports = QUnit;
+
+	// For consistency with CommonJS environments' exports
+	module.exports.QUnit = QUnit;
+}
+
+// For CommonJS with exports, but without module.exports, like Rhino
+if ( typeof exports !== "undefined" && exports ) {
+	exports.QUnit = QUnit;
 }

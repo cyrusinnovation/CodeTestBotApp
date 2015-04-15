@@ -7,18 +7,18 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    {{BASE_TAG}}
+    {{content-for 'head'}}
 
     <link rel="stylesheet" href="assets/vendor.css">
-    <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/code-test-bot-app.css">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="icon" href="/assets/favicon.png">
+
+    {{content-for 'head-footer'}}
   </head>
   <body>
-    <script>
-      window.CodeTestBotAppENV = {{ENV}};
-      window.EmberENV = window.CodeTestBotAppENV.EmberENV;
-    </script>
+    {{content-for 'body'}}
+
     <script src="assets/vendor.js"></script>
     <script src="assets/code-test-bot-app.js"></script>
     <script>
@@ -26,6 +26,8 @@
 //        whitelistUrls: ['example.com/scripts/']
       }).install();
       window.CodeTestBotApp = require('code-test-bot-app/app')['default'].create(CodeTestBotAppENV.APP);
-    </script>
+    </script>-
+
+    {{content-for 'body-footer'}}
   </body>
 </html>
