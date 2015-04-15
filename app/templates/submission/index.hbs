@@ -8,15 +8,32 @@
 <div class="row">
   <div class="col-md-10">
     <form class="form-horizontal form-horizontal-narrow" role="form">
-      {{#if canShowPrivateDetails}}
-        <div class="form-group">
-          <label class="col-sm-2 control-label">Candidate</label>
+        {{#if canShowPrivateDetails}}
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Candidate Name</label>
 
-          <div class="col-sm-10">
-            <p class="form-control-static">{{candidateDisplay}}</p>
+            <div class="col-sm-4">
+                {{#if isRecruiter}}
+                    {{input value=candidateName class="form-control"}}
+                {{else}}
+                  <p class="form-control-static">{{candidateName}}</p>
+                {{/if}}
+            </div>
+
           </div>
-        </div>
-      {{/if}}
+
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Candidate Email</label>
+
+            <div class="col-sm-4">
+                {{#if isRecruiter}}
+                    {{input value=candidateEmail class="form-control"}}
+                {{else}}
+                  <p class="form-control-static">{{candidateEmail}}</p>
+                {{/if}}
+            </div>
+          </div>
+        {{/if}}
 
       <div class="form-group">
         <label class="col-sm-2 control-label">Code Test File</label>
@@ -26,19 +43,19 @@
         </div>
       </div>
 
-      {{#if canShowPrivateDetails}}
-        <div class="form-group">
-          <label class="col-sm-2 control-label">Resume File</label>
+        {{#if canShowPrivateDetails}}
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Resume File</label>
 
-          <div class="col-sm-10">
-            {{#if resumefile}}
-              <a class="btn btn-default" {{bind-attr href=resumefile}}><i class="fa fa-download"></i>&nbsp;Download</a>
-            {{else}}
-              <p class="form-control-static">N/A (resume was not provided)</p>
-            {{/if}}
+            <div class="col-sm-10">
+                {{#if resumefile}}
+                  <a class="btn btn-default" {{bind-attr href=resumefile}}><i class="fa fa-download"></i>&nbsp;Download</a>
+                {{else}}
+                  <p class="form-control-static">N/A (resume was not provided)</p>
+                {{/if}}
+            </div>
           </div>
-        </div>
-      {{/if}}
+        {{/if}}
 
       <div class="form-group">
         <label class="col-sm-2 control-label">Email Text</label>
@@ -52,38 +69,62 @@
         <label class="col-sm-2 control-label">Source of Referral</label>
 
         <div class="col-sm-10">
-          {{#if source}}
-            <p class="form-control-static">{{source}}</p>
-          {{else}}
-            <p class="form-control-static">N/A (source was not provided)</p>
-          {{/if}}
+            {{#if source}}
+              <p class="form-control-static">{{source}}</p>
+            {{else}}
+              <p class="form-control-static">N/A (source was not provided)</p>
+            {{/if}}
         </div>
       </div>
 
-      {{#if canShowPrivateDetails}}
+      {{#if isRecruiter}}
         <div class="form-group">
           <label class="col-sm-2 control-label">GitHub Profile URL</label>
-
-          <div class="col-sm-10">
+          <div class="col-sm-6">
+            <div class="input-group">
+              {{input value=githubDisplay class="form-control"}}
+              <span class="input-group-btn">
+                <a class="form-control-static btn btn-default" {{bind-attr href=githubDisplay}}>Visit GitHub Profile</a>
+              </span>
+            </div>
+          </div>
+        </div>
+      {{else}}
+        {{#if isInactive}}
+          <div class="form-group">
+            <label class="col-sm-2 control-label">GitHub Profile URL</label>
             {{#if github}}
-              <a class="form-control-static" {{bind-attr href=githubDisplay}}>{{githubDisplay}}</a>
+              <a class="form-control-static" {{bind-attr href=githubDisplay}}>Visit GitHub Profile</a>
             {{else}}
               <p class="form-control-static">N/A (url was not provided)</p>
             {{/if}}
           </div>
-        </div>
+        {{/if}}
+      {{/if}}
 
+      {{#if isRecruiter}}
         <div class="form-group">
-          <label class="col-sm-2 control-label">LinkedIn URL</label>
-
-          <div class="col-sm-10">
+          <label class="col-sm-2 control-label">LinkedIn Profile URL</label>
+          <div class="col-sm-6">
+            <div class="input-group">
+              {{input value=linkedinDisplay class="form-control"}}
+              <span class="input-group-btn">
+                <a class="form-control-static btn btn-default" {{bind-attr href=linkedinDisplay}}>Visit LinkedIn Profile</a>
+              </span>
+            </div>
+          </div>
+        </div>
+      {{else}}
+        {{#if isInactive}}
+          <div class="form-group">
+            <label class="col-sm-2 control-label">LinkedIn Profile URL</label>
             {{#if linkedin}}
-              <a class="form-control-static" {{bind-attr href=linkedinDisplay}}>{{linkedinDisplay}}</a>
+              <a class="form-control-static" {{bind-attr href=linkedinDisplay}}>Visit LinkedIn Profile</a>
             {{else}}
               <p class="form-control-static">N/A (url was not provided)</p>
             {{/if}}
           </div>
-        </div>
+        {{/if}}
       {{/if}}
 
       {{#if hasPublishedAssessments}}
@@ -96,24 +137,30 @@
         </div>
       {{/if}}
     </form>
+    {{#if isRecruiter}}
+      <button type="button" class="btn btn-success pull-right" {{action updateSubmission}}>Save Updates</button>
+    {{/if}}
   </div>
+
+
   <div class="col-md-2">
     <div class="btn-group-vertical text-left pull-right">
-      {{#if canShowPrivateDetails}}
-        {{#if showReportButton}}
-          {{#link-to 'submission.report' class="btn btn-default" }}<i class="fa fa-table"></i>&nbsp;Generate
-            Report{{/link-to}}
-        {{/if}}
-        {{#if showCloseButton}}
-          <a class="btn btn-default" {{action closeSubmission}}><i class="fa fa-check"></i>&nbsp;Close Submission</a>
-        {{/if}}
-        {{#if showReopenButton}}
-          <a class="btn btn-default" {{action reopenSubmission}}><i class="fa fa-refresh"></i>&nbsp;Reopen
+        {{#if canShowPrivateDetails}}
+            {{#if showReportButton}}
+                {{#link-to 'submission.report' class="btn btn-default" }}<i class="fa fa-table"></i>&nbsp;Generate
+                  Report{{/link-to}}
+            {{/if}}
+            {{#if showCloseButton}}
+              <a class="btn btn-default" {{action closeSubmission}}><i class="fa fa-check"></i>&nbsp;Close
+                Submission</a>
+            {{/if}}
+            {{#if showReopenButton}}
+              <a class="btn btn-default" {{action reopenSubmission}}><i class="fa fa-refresh"></i>&nbsp;Reopen
+                Submission</a>
+            {{/if}}
+          <a class="btn btn-default" {{action 'confirmDelete' this}}><i class="fa fa-close"></i>&nbsp;Delete
             Submission</a>
         {{/if}}
-        <a class="btn btn-default" {{action 'confirmDelete' this}}><i class="fa fa-close"></i>&nbsp;Delete
-          Submission</a>
-      {{/if}}
     </div>
   </div>
 </div>
@@ -121,14 +168,14 @@
   <div class="col-md-12">
     <h3>Assessments</h3>
 
-    {{outlet 'assessments'}}
+      {{outlet 'assessments'}}
 
-    {{#if active}}
-      {{#if userCanCreateAssessment}}
-        {{#link-to 'assessments.new' class="btn btn-success pull-right"}}{{newAssessmentButtonText}}{{/link-to}}
+      {{#if active}}
+          {{#if userCanCreateAssessment}}
+              {{#link-to 'assessments.new' class="btn btn-success pull-right"}}{{newAssessmentButtonText}}{{/link-to}}
+          {{/if}}
+      {{else}}
+        <p>This submission is closed for new assessments.</p>
       {{/if}}
-    {{else}}
-      <p>This submission is closed for new assessments.</p>
-    {{/if}}
   </div>
 </div>

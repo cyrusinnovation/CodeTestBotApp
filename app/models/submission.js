@@ -44,7 +44,7 @@ export default DS.Model.extend({
 
     githubDisplay: function(){
       var github = this.get('github');
-      if(github.indexOf('https://') !== 0){
+      if(!!github && github.indexOf('https://') !== 0){
         return 'https://' + github;
       }
       return github;
@@ -52,7 +52,7 @@ export default DS.Model.extend({
 
     linkedinDisplay: function(){
         var linkedin = this.get('linkedin');
-        if(linkedin.indexOf('https://') !== 0){
+        if(!!linkedin && linkedin.indexOf('https://') !== 0){
             return 'https://' + linkedin;
         }
         return linkedin;

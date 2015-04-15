@@ -40,7 +40,6 @@ export default Ember.ObjectController.extend(UserAwareControllerMixin, {
     }),
 
     averageScore: function() {
-        //return roundToNearestHalf(this.get('rawAverageScore'));
         return Math.round(this.get('rawAverageScore'));
     }.property('rawAverageScore'),
 
@@ -89,6 +88,14 @@ export default Ember.ObjectController.extend(UserAwareControllerMixin, {
           var self = this;
           var submission = this.get('content');
           submission.set('active', true);
+          submission.save().then(function() {
+            self.transitionToRoute('/submissions');
+          });
+        },
+
+        updateSubmission: function() {
+          var self = this;
+          var submission = this.get('content');
           submission.save().then(function() {
             self.transitionToRoute('/submissions');
           });
