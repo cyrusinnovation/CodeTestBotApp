@@ -48,10 +48,11 @@
             <label class="col-sm-2 control-label">Resume File</label>
 
             <div class="col-sm-10">
-                {{#if resumefile}}
+                {{#if showResumeDownload}}
                   <a class="btn btn-default" {{bind-attr href=resumefile}}><i class="fa fa-download"></i>&nbsp;Download</a>
                 {{else}}
                   <p class="form-control-static">N/A (resume was not provided)</p>
+                    {{view 'file-upload'  name="resumefile"  id="resumefile" fileName=resumefileName file=resumefile class="form-control"}}
                 {{/if}}
             </div>
           </div>
@@ -77,69 +78,72 @@
         </div>
       </div>
 
-      {{#if isRecruiter}}
-        <div class="form-group">
-          <label class="col-sm-2 control-label">GitHub Profile URL</label>
-          <div class="col-sm-6">
-            <div class="input-group">
-              {{input value=github class="form-control"}}
-              <span class="input-group-btn">
-                <a class="form-control-static btn btn-default" {{bind-attr href=githubDisplay}}>Visit GitHub Profile</a>
-              </span>
-            </div>
-          </div>
-        </div>
-      {{else}}
-        {{#if isInactive}}
+        {{#if isRecruiter}}
           <div class="form-group">
             <label class="col-sm-2 control-label">GitHub Profile URL</label>
-            {{#if github}}
-              <a class="form-control-static" {{bind-attr href=githubDisplay}}>Visit GitHub Profile</a>
-            {{else}}
-              <p class="form-control-static">N/A (url was not provided)</p>
-            {{/if}}
-          </div>
-        {{/if}}
-      {{/if}}
 
-      {{#if isRecruiter}}
-        <div class="form-group">
-          <label class="col-sm-2 control-label">LinkedIn Profile URL</label>
-          <div class="col-sm-6">
-            <div class="input-group">
-              {{input value=linkedin class="form-control"}}
-              <span class="input-group-btn">
-                <a class="form-control-static btn btn-default" {{bind-attr href=linkedinDisplay}}>Visit LinkedIn Profile</a>
+            <div class="col-sm-6">
+              <div class="input-group">
+                  {{input value=github class="form-control"}}
+                <span class="input-group-btn">
+                <a class="form-control-static btn btn-default" {{bind-attr href=githubDisplay}}>Visit GitHub Profile</a>
               </span>
+              </div>
             </div>
           </div>
-        </div>
-      {{else}}
-        {{#if isInactive}}
+        {{else}}
+            {{#if isInactive}}
+              <div class="form-group">
+                <label class="col-sm-2 control-label">GitHub Profile URL</label>
+                  {{#if github}}
+                    <a class="form-control-static" {{bind-attr href=githubDisplay}}>Visit GitHub Profile</a>
+                  {{else}}
+                    <p class="form-control-static">N/A (url was not provided)</p>
+                  {{/if}}
+              </div>
+            {{/if}}
+        {{/if}}
+
+        {{#if isRecruiter}}
           <div class="form-group">
             <label class="col-sm-2 control-label">LinkedIn Profile URL</label>
-            {{#if linkedin}}
-              <a class="form-control-static" {{bind-attr href=linkedinDisplay}}>Visit LinkedIn Profile</a>
-            {{else}}
-              <p class="form-control-static">N/A (url was not provided)</p>
+
+            <div class="col-sm-6">
+              <div class="input-group">
+                  {{input value=linkedin class="form-control"}}
+                <span class="input-group-btn">
+                <a class="form-control-static btn btn-default" {{bind-attr href=linkedinDisplay}}>Visit LinkedIn
+                  Profile</a>
+              </span>
+              </div>
+            </div>
+          </div>
+        {{else}}
+            {{#if isInactive}}
+              <div class="form-group">
+                <label class="col-sm-2 control-label">LinkedIn Profile URL</label>
+                  {{#if linkedin}}
+                    <a class="form-control-static" {{bind-attr href=linkedinDisplay}}>Visit LinkedIn Profile</a>
+                  {{else}}
+                    <p class="form-control-static">N/A (url was not provided)</p>
+                  {{/if}}
+              </div>
             {{/if}}
+        {{/if}}
+
+        {{#if hasPublishedAssessments}}
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Consensus</label>
+
+            <div class="col-sm-10">
+              <p class="form-control-static">{{averageScoreText}}</p>
+            </div>
           </div>
         {{/if}}
-      {{/if}}
-
-      {{#if hasPublishedAssessments}}
-        <div class="form-group">
-          <label class="col-sm-2 control-label">Consensus</label>
-
-          <div class="col-sm-10">
-            <p class="form-control-static">{{averageScoreText}}</p>
-          </div>
-        </div>
-      {{/if}}
     </form>
-    {{#if isRecruiter}}
-      <button type="button" class="btn btn-success pull-right" {{action updateSubmission}}>Save Updates</button>
-    {{/if}}
+      {{#if isRecruiter}}
+        <button type="button" class="btn btn-success pull-right" {{action updateSubmission}}>Save Updates</button>
+      {{/if}}
   </div>
 
 

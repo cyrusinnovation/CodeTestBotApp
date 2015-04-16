@@ -26,6 +26,7 @@ export default Ember.ObjectController.extend({
         submit: function() {
             var self = this;
             self.get('submission').save().then(function() {
+                self.get('submission').set('resumeChanged', false);
                 self.transitionToRoute(self.get('postSubmitURL'));
             });
         }

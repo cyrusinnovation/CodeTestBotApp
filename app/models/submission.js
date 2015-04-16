@@ -17,10 +17,31 @@ export default DS.Model.extend({
     linkedin: DS.attr(),
     resumefile: DS.attr(),
     resumefileName: DS.attr(),
-
     level: DS.belongsTo('level'),
     language: DS.belongsTo('language'),
     assessments: DS.hasMany('assessment'),
+
+    // START OF HACK
+    // We are using 'resumefile' to represent two different fields
+    // When creating a new submission, it represents the uploaded file content
+    // When showing a submission, it represents the uploaded file path
+    // We are implementing the ability to upload a resume on the show page,
+    // and the following properties help us manage that
+    resumeChanged: false,
+    resumeChangedOnce: false,
+
+    resumeChangedObserver: function() {
+        if(this.get('resumefile') && !this.get('resumeChangedOnce')) {
+            this.set('resumeChanged',true);
+            this.set('resumeChangedOnce',true);
+        }
+    }.observes('resumefile'),
+
+    showResumeDownload: function(){
+        return this.get('resumefile') && !(this.get('resumeChanged'));
+    }.property('resumeChanged', 'resumefile'),
+    // END OF HACK
+
 
     candidateDisplay: function() {
         return this.get('candidateName') + ' <' + this.get('candidateEmail') + '>';

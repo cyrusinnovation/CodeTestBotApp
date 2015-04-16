@@ -97,7 +97,8 @@ export default Ember.ObjectController.extend(UserAwareControllerMixin, {
           var self = this;
           var submission = this.get('content');
           submission.save().then(function() {
-            self.transitionToRoute('/submissions');
+              submission.set('resumeChanged', false);
+              self.transitionToRoute('/submissions');
           });
         }
     }
