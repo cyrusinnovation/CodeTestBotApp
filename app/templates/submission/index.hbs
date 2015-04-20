@@ -154,6 +154,9 @@
                 {{#link-to 'submission.report' class="btn btn-default" }}<i class="fa fa-table"></i>&nbsp;Generate
                   Report{{/link-to}}
             {{/if}}
+            {{#if showEmailButton}}
+                <a class="btn btn-default" {{action emailSummary}}><i class="fa fa-envelope"></i>&nbsp;Send Assessment to me</a>
+            {{/if}}
             {{#if showCloseButton}}
               <a class="btn btn-default" {{action closeSubmission}}><i class="fa fa-check"></i>&nbsp;Close
                 Submission</a>
