@@ -6,6 +6,7 @@ export default DS.Model.extend({
     candidateName: DS.attr(),
     candidateEmail: DS.attr(),
     emailText: DS.attr(),
+    agile: DS.attr(),
     zipfile: DS.attr(),
     zipfileName: DS.attr(),
     active: DS.attr(),

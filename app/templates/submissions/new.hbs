@@ -82,6 +82,13 @@
       </div>
 
       <div class="form-group">
+        <label class="col-sm-2 control-label">In a few sentences please share your thoughts on Agile and TDD</label>
+        <div class="col-sm-6">
+          {{textarea value=submission.agile rows="6" id="agile" class="form-control"}}
+        </div>
+      </div>
+
+      <div class="form-group">
         <label class="col-sm-2 control-label">{{zipfileLabel}}</label>
         <div class="col-sm-6">
           {{#if isExternal}}

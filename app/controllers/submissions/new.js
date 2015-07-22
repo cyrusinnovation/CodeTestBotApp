@@ -18,9 +18,12 @@ export default Ember.ObjectController.extend({
     isFormIncomplete: function() {
         return Ember.isEmpty(this.get('submission.candidateName')) ||
             Ember.isEmpty(this.get('submission.candidateEmail')) ||
+            Ember.isEmpty(this.get('submission.level')) ||
+            Ember.isEmpty(this.get('submission.language')) ||
             Ember.isEmpty(this.get('submission.emailText')) ||
+            Ember.isEmpty(this.get('submission.agile')) ||
             Ember.isEmpty(this.get('submission.zipfile'));
-    }.property('submission.candidateName', 'submission.candidateEmail', 'submission.emailText', 'submission.zipfile'),
+    }.property('submission.candidateName', 'submission.candidateEmail', 'submission.emailText', 'submission.agile', 'submission.level', 'submission.language', 'submission.zipfile'),
 
     actions: {
         submit: function() {
