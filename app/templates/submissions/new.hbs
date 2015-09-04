@@ -2,53 +2,61 @@
   <div class="col-md-12">
     <h1>New Submission</h1>
     {{#if isExternal}}
-        <p class="instructions-link text-right">Click <a href="http://www.cyrusinnovation.com/code-test/">here</a> to
-            view submission instructions.</p>
+      <p class="instructions-link text-right">Click <a href="http://www.cyrusinnovation.com/code-test/">here</a> to
+        view submission instructions.</p>
     {{/if}}
-    <form class="form-horizontal" role="form">
-      <div class="form-group">
-        <label class="col-sm-2 control-label">{{submitter}} Name</label>
-        <div class="col-sm-4">
-          {{input value=submission.candidateName placeholder="Full Name" class="form-control"}}
-        </div>
+  <form class="form-horizontal" role="form">
+    <div class="form-group">
+      <label class="col-sm-2 control-label">{{submitter}} Name</label>
+
+      <div class="col-sm-4">
+        {{input value=submission.candidateName placeholder="Full Name" class="form-control"}}
       </div>
+    </div>
+    {{#unless isExternal}}
 
       <div class="form-group">
         <label class="col-sm-2 control-label">{{submitter}} Email</label>
+
         <div class="col-sm-4">
           {{input value=submission.candidateEmail placeholder="Email Address" class="form-control"}}
         </div>
       </div>
+    {{/unless }}
 
-      <div class="form-group">
-        <label class="col-sm-2 control-label">{{submitter}} Level</label>
-        <div class="col-sm-4">
-          {{view Ember.Select viewName="select"
-          contentBinding="levels"
-          optionLabelPath="content.text"
-          optionValuePath="content.id"
-          prompt=levelPrompt
-          selectionBinding="submission.level"
-          class="form-control"}}
-        </div>
+    <div class="form-group">
+      <label class="col-sm-2 control-label">{{submitter}} Level</label>
+
+      <div class="col-sm-4">
+        {{view Ember.Select viewName="select"
+        contentBinding="levels"
+        optionLabelPath="content.text"
+        optionValuePath="content.id"
+        prompt=levelPrompt
+        selectionBinding="submission.level"
+        class="form-control"}}
       </div>
+    </div>
 
-      <div class="form-group">
-        <label class="col-sm-2 control-label">{{languageLabel}}</label>
-        <div class="col-sm-4">
-          {{view Ember.Select viewName="select"
-          id="language-select"
-          contentBinding="languages"
-          optionLabelPath="content.name"
-          optionValuePath="content.id"
-          prompt=languagePrompt
-          selectionBinding="submission.language"
-          class="form-control"}}
-        </div>
+    <div class="form-group">
+      <label class="col-sm-2 control-label">{{languageLabel}}</label>
+
+      <div class="col-sm-4">
+        {{view Ember.Select viewName="select"
+        id="language-select"
+        contentBinding="languages"
+        optionLabelPath="content.name"
+        optionValuePath="content.id"
+        prompt=languagePrompt
+        selectionBinding="submission.language"
+        class="form-control"}}
       </div>
+    </div>
 
+    {{#unless isExternal}}
       <div class="form-group">
         <label class="col-sm-2 control-label">{{sourceLabel}}</label>
+
         <div class="col-sm-4">
           {{view 'select'
           content=sources
@@ -73,34 +81,44 @@
           {{input value=submission.linkedin placeholder="URL" class="form-control"}}
         </div>
       </div>
+    {{/unless}}
 
-      <div class="form-group">
-        <label class="col-sm-2 control-label">{{notesLabel}}</label>
-        <div class="col-sm-6">
-          {{textarea value=submission.emailText rows="6" placeholder=notesPlaceholder id="email-text" class="form-control"}}
-        </div>
+    <div class="form-group">
+      <label class="col-sm-2 control-label">{{notesLabel}}</label>
+
+      <div class="col-sm-6">
+        {{textarea value=submission.emailText rows="6" placeholder=notesPlaceholder id="email-text" class="form-control"}}
       </div>
+    </div>
 
+    {{#unless isExternal}}
       <div class="form-group">
         <label class="col-sm-2 control-label">In a few sentences please share your thoughts on Agile and TDD</label>
+
         <div class="col-sm-6">
           {{textarea value=submission.agile rows="6" id="agile" class="form-control"}}
         </div>
       </div>
 
-      <div class="form-group">
-        <label class="col-sm-2 control-label">{{zipfileLabel}}</label>
-        <div class="col-sm-6">
-          {{#if isExternal}}
-          {{else}}
-            <p>Select the zipfile provided by the candidate.</p>
-          {{/if}}
-          {{view 'file-upload' name="zipfile" file=submission.zipfile id="zipfile" fileName=submission.zipfileName class="form-control"}}
-        </div>
+    {{/unless}}
+
+    <div class="form-group">
+      <label class="col-sm-2 control-label">{{zipfileLabel}}</label>
+
+      <div class="col-sm-6">
+        {{#if isExternal}}
+        {{else}}
+          <p>Select the zipfile provided by the candidate.</p>
+        {{/if}}
+        {{view 'file-upload' name="zipfile" file=submission.zipfile id="zipfile" fileName=submission.zipfileName class="form-control"}}
       </div>
+    </div>
+
+    {{#unless isExternal}}
 
       <div class="form-group">
         <label class="col-sm-2 control-label">{{resumefileLabel}}</label>
+
         <div class="col-sm-6">
           {{#if isExternal}}
           {{else}}
@@ -110,9 +128,22 @@
         </div>
       </div>
     </form>
+    {{/unless}}
+
 
     <hr/>
+    {{#if isExternal}}
+      <button type="button"
+              class="btn btn-success pull-right" {{bind-attr disabled=isExternalFormIncomplete}} {{action submit}}>
+        Create New Codetest
+      </button>
+    {{else}}
+      <button type="button"
+              class="btn btn-success pull-right" {{bind-attr disabled=isFormIncomplete}} {{action submit}}>
+        Create New Codetest
+      </button>
+    {{/if}}
 
-    <button type="button" class="btn btn-success pull-right" {{bind-attr disabled=isFormIncomplete}} {{action submit}}>Create New Codetest</button>
+
   </div>
 </div>
