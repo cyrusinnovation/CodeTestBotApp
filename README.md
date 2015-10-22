@@ -14,7 +14,7 @@ You will need the following things properly installed on your computer.
 
 * [Git](http://git-scm.com/)
 * [Node.js](http://nodejs.org/) (with NPM) and [Bower](http://bower.io/)
-** *Note:* v0.12.x of node.js is required. v4.x will not work.
+  * **Note:** v0.12.x of node.js is required. v4.x will not work.
 
 ## Installation
 
@@ -52,7 +52,6 @@ This buildpack caches npm & bower packages. So if you want to purge the cache an
 
 * `heroku plugins:install https://github.com/heroku/heroku-repo.git` (already done - only needs to be done once)
 * `heroku repo:purge_cache -a codetestbot`
-* `heroku repo:rebuild -a codetestbot`
 
 ## Further Reading / Useful Links
 
